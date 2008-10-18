@@ -22,9 +22,9 @@ In snippet 'animal_info':
     Please set the 'animal' parameter when calling this snippet!
   </r:unless_var>
   <r:if_var name="animal">
-    So you want to know about <r:pluralize_and_capitalize><r:var name="animal" /><r:pluralize_and_capitalize>?
+    So you want to know about <r:pluralize_and_capitalize><r:var name="animal" /></r:pluralize_and_capitalize>?
     
-    <r:pluralize_and_capitalize><r:var name="animal" /><r:pluralize_and_capitalize> are fierce animals, let's hope you never meet one.
+    <r:pluralize_and_capitalize><r:var name="animal" /></r:pluralize_and_capitalize> are fierce animals, let's hope you never meet one.
   </r:if_var>
 
 Note: The 'pluralize_and_capitalize' tag is not included in this extension.
