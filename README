@@ -1,3 +1,36 @@
 = Parameterized Snippets
 
-Description goes here
+Allow sending parameters to snippets
+
+
+= Usage
+
+In page 'Home':
+
+  What's up with elephants?
+  
+  <r:snippet name="animal_info" animal="elephant" />
+  
+  And lions? What do lions do?
+  
+  <r:snippet name="animal_info" animal="lion" />
+
+In snippet 'animal_info':
+
+  <r:unless_var name="animal">
+    What animal do you want info about?
+    Please set the 'animal' attribute when calling this snippet!
+  </r:unless_var>
+  <r:if_var name="animal">
+    So you want to know about <r:pluralize_and_capitalize><r:var name="animal" /><r:pluralize_and_capitalize>?
+    
+    <r:pluralize_and_capitalize><r:var name="animal" /><r:pluralize_and_capitalize> are fierce animals, let's hope you never meet one.
+  </r:if_var>
+
+Note: The 'pluralize_and_capitalize' tag is not included in this extension.
+
+
+= Todo
+
+  - Possibility to match a snippet parameter with a Regex, e.g. <r:if_var name="animal" matches=".*ep[h|]ant?"> (Note: this is a bad example.)
+

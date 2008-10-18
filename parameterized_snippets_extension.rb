@@ -1,9 +1,8 @@
-# require_dependency 'application'
-
 class ParameterizedSnippetsExtension < Radiant::Extension
-  version "1.0"
-  description "Describe your extension here"
-  url "http://yourwebsite.com/parameterized_snippets"
+
+  version '1.0'
+  description 'Allow sending parameters to snippets'
+  url 'http://zoopzoop.net/projects/radiant-parameterized-snippets-extension'
 
   def activate
     Page.send :include, ParameterizedSnippets::PageExt
