@@ -19,7 +19,7 @@ In snippet 'animal_info':
 
   <r:unless_var name="animal">
     What animal do you want info about?
-    Please set the 'animal' attribute when calling this snippet!
+    Please set the 'animal' parameter when calling this snippet!
   </r:unless_var>
   <r:if_var name="animal">
     So you want to know about <r:pluralize_and_capitalize><r:var name="animal" /><r:pluralize_and_capitalize>?
