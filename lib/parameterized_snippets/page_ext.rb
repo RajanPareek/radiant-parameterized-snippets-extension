@@ -81,11 +81,11 @@ module ParameterizedSnippets
 
       def var_exists_and_matches(tag)
         var = check_for_attr(tag, 'name')
-        content = get_content_from_tag_binding(tag)
+        tag_binding = get_snippet_tag_binding(tag)
         if tag.attr['matches']
-          content.attr[var] =~ /^#{tag.attr['matches']}$/
+          tag_binding.attr[var] =~ /^#{tag.attr['matches']}$/
         else
-          content.attr[var]
+          tag_binding.attr[var]
         end
       end
 
