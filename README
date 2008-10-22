@@ -31,5 +31,8 @@ In snippet 'animal_info':
     <r:unless_var name="animal" matches="ant|mouse|eagle">
       Glad you didn't ask about ants, mice or eagles! I don't know JACK about those animals!
     </r:if_var>
+    
+    Enimal? Is there an enimal? If yes, tell me what it is, 
+    if no, don't you dare returning an error message! <r:var name="enimal" missing="ignore" />
   </r:if_var>
 

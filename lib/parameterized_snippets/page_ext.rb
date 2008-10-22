@@ -38,11 +38,12 @@ module ParameterizedSnippets
     end
 
     desc %{
-      Outputs the value of the parameter or an error message if the parameter cannot be found.
+      Outputs the value of the parameter.
+      If the value cannot be found, an error message or, if you use the 'missing' parameter, nothing is shown.
       
       *Usage:*
 
-      <pre><code><r:var name="parameter_name" /></code></pre>
+      <pre><code><r:var name="parameter_name" [missing="ignore"] /></code></pre>
       
       *Example:*
       
@@ -52,15 +53,17 @@ module ParameterizedSnippets
 
       animal_info snippet:
       
-      <pre><code><r:var name="animal" /> # Outputs 'elephant'</code></pre>
+      <pre><code><r:var name="animal" /> # Outputs 'elephant'
+      <r:var name="enimal" missing="ignore" /> # Outputs nothing</code></pre>
     }
     tag 'snippet:var' do |tag|
+      ignore_missing = tag.attr['missing'] == 'ignore'
       var = check_for_attr(tag, 'name')
       tag_binding = get_snippet_tag_binding(tag)
       if tag_binding && tag_binding.attr[var]
         tag_binding.attr[var]
       else
-        "Could not find parameter '#{var}' in snippet '#{tag_binding.attributes['name']}'."
+        ignore_missing ? '' : "Could not find parameter '#{var}' in snippet '#{tag_binding.attributes['name']}'."
       end
     end
 
