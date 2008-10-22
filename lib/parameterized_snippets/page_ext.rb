@@ -22,7 +22,7 @@ module ParameterizedSnippets
       
       <pre><code><r:if_var name="animal" matches=".le(?:ph|f)ant">...</r:if_var></code></pre>
     }
-    tag "snippet:if_var" do |tag|
+    tag 'snippet:if_var' do |tag|
       tag.expand if var_exists_and_matches(tag)
     end
 
@@ -33,7 +33,7 @@ module ParameterizedSnippets
       
       <pre><code><r:unless_var name="parameter_name" [matches="regex"]>...</r:unless_var></code></pre>
     }
-    tag "snippet:unless_var" do |tag|
+    tag 'snippet:unless_var' do |tag|
       tag.expand unless var_exists_and_matches(tag)
     end
 
@@ -54,15 +54,13 @@ module ParameterizedSnippets
       
       <pre><code><r:var name="animal" /> # Outputs 'elephant'</code></pre>
     }
-    tag "snippet:var" do |tag|
+    tag 'snippet:var' do |tag|
       var = check_for_attr(tag, 'name')
-      content = get_content_from_tag_binding(tag)
-      if content.blank?
-        "Error getting content."
-      elsif content.attr[var].nil?
-        "Could not find attribute '#{var}'."
+      tag_binding = get_snippet_tag_binding(tag)
+      if tag_binding && tag_binding.attr[var]
+        tag_binding.attr[var]
       else
-        content.attr[var]
+        "Could not find parameter '#{var}' in snippet '#{tag_binding.attributes['name']}'."
       end
     end
 
@@ -74,8 +72,8 @@ module ParameterizedSnippets
         end
       end
 
-      def get_content_from_tag_binding(tag)
-        tag.context.instance_variable_get(:@tag_binding_stack).detect { |slot| slot.name == 'snippet' }
+      def get_snippet_tag_binding(tag)
+        tag.context.instance_variable_get(:@tag_binding_stack).detect { |tag_binding| tag_binding.name == 'snippet' }
       end
 
       def var_exists_and_matches(tag)
