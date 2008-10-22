@@ -1,6 +1,6 @@
 = Parameterized Snippets
 
-Allow sending parameters to snippets
+Call snippets with parameters which can be reused in the snippet.
 
 
 = Usage
