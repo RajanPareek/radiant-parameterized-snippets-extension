@@ -73,7 +73,7 @@ module ParameterizedSnippets
       end
 
       def get_snippet_tag_binding(tag)
-        tag.context.instance_variable_get(:@tag_binding_stack).detect { |tag_binding| tag_binding.name == 'snippet' }
+        tag.context.instance_variable_get(:@tag_binding_stack).reverse.detect { |tag_binding| tag_binding.name == 'snippet' }
       end
 
       def var_exists_and_matches(tag)
