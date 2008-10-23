@@ -1,6 +1,15 @@
-= Parameterized Snippets
+= Radiant 'Parameterized Snippets' Extension
 
 Call snippets with parameters which can be reused in the snippet.
+
+
+= Installation
+
+In your Rails app directory:
+
+git clone git://github.com/manuelmeurer/radiant-parameterized-snippets-extension.git vendor/extensions/parameterized_snippets
+
+Or download the ZIP or TAR file from http://github.com/manuelmeurer/radiant-parameterized-snippets-extension/ and extract to vendor/extensions/parameterized_snippets
 
 
 = Usage
